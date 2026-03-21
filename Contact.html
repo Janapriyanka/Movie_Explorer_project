@@ -16,10 +16,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(120deg, #0b1320, #0f1c2e);
     color: white;
-    padding-top: 80px; /* space for navbar */
+    padding-top: 80px;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .header {
     position: fixed;
@@ -56,7 +56,6 @@ body {
     text-decoration: none;
     color: white;
     font-size: 14px;
-    transition: 0.3s;
 }
 
 .navbar-link:hover {
@@ -93,7 +92,7 @@ body {
     color: black;
 }
 
-/* ================= FORM ================= */
+/*  FORM */
 
 .form-container {
     width: 380px;
@@ -158,48 +157,233 @@ input:focus, textarea:focus, select:focus {
     background: #baff00;
     color: black;
 }
+
+/*  FOOTER  */
+
+.footer-bottom {
+    margin-top: 50px;
+    background: rgba(10, 15, 25, 0.95);
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+/* Text */
+.footer-bottom p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.footer-bottom a {
+    color: #baff00;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Image */
+.footer-bottom-img {
+    height: 30px;
+    opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* ================= RESPONSIVE NAVBAR ================= */
+
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(10, 15, 25, 0.98);
+        padding: 20px;
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-actions {
+        display: none;
+    }
+}
+
+/* ===== HAMBURGER ANIMATION ===== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Transform to X */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 998;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 260px;
+        height: 100vh;
+        background: rgba(10, 15, 25, 0.98);
+        padding: 25px;
+        transition: 0.4s ease;
+        z-index: 999;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .header-actions {
+        display: none;
+    }
+}
+
+
 </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-
 <header class="header">
     <div class="container">
 
-        <!-- Logo -->
         <a href="#" class="logo">
             <img src="./images/logo.svg" alt="Filmlane">
         </a>
 
-        <!-- Menu -->
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <ul class="navbar-list">
                 <li><a href="./index.html" class="navbar-link">Home</a></li>
                 <li><a href="./collections.html" class="navbar-link">Collections</a></li>
                 <li><a href="./contact.html" class="navbar-link">Contact</a></li>
             </ul>
+
+            
+            
         </nav>
 
-        <!-- Right Side -->
         <div class="header-actions">
             <div class="lang-wrapper">
                 <select>
-                    <option style="color: black;">EN</option>
-                    <option style="color: black;">AU</option>
-                    <option style="color: black;">AR</option>
+                    <option style="color:black;">EN</option>
+                    <option style="color:black;">AU</option>
+                    <option style="color:black;">AR</option>
                 </select>
             </div>
 
             <button class="btn-primary">Sign in</button>
         </div>
 
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        
+</button>
+
+
+
     </div>
 </header>
 
 <!-- FORM -->
-
 <div class="form-container">
     <h2>🎬 Contact Us</h2>
 
@@ -225,6 +409,19 @@ input:focus, textarea:focus, select:focus {
 
         <div class="success" id="successMsg"></div>
     </form>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bottom">
+    <div class="footer-container">
+
+        <p>
+            &copy; 2026 <a href="#">codewithWebWarriors</a>. All Rights Reserved
+        </p>
+
+        <img src="./images/footer-bottom-img.png" alt="payments" class="footer-bottom-img">
+
+    </div>
 </div>
 
 <script src="contact.js"></script>
