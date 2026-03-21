@@ -67,27 +67,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
 const menuToggle = document.getElementById("menuToggle");
 const navbar = document.getElementById("navbar");
-const overlay = document.getElementById("overlay");
-const navLinks = document.querySelectorAll(".navbar-link");
 
 menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
     navbar.classList.toggle("active");
-    overlay.classList.toggle("active");
-});
-
-// Close when clicking overlay
-overlay.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
-    navbar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-// Close when clicking a link
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        menuToggle.classList.remove("active");
-        navbar.classList.remove("active");
-        overlay.classList.remove("active");
-    });
 });
