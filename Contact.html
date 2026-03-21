@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Filmane Contact</title>
 
-
 <style>
 * {
     margin: 0;
@@ -12,19 +11,93 @@
     box-sizing: border-box;
 }
 
+/* BODY */
 body {
-    font-family: 'Poppins', sans-serif; /* ✅ Updated */
-    height: 100vh;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(120deg, #0b1320, #0f1c2e);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
+    padding-top: 80px; /* space for navbar */
 }
 
-/* Container */
-.container {
+/* ================= NAVBAR ================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 15, 25, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.header .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+    height: 40px;
+}
+
+/* Navbar */
+.navbar-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar-link:hover {
+    color: #baff00;
+}
+
+/* Right Section */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-wrapper select {
+    background: transparent;
+    color: white;
+    border: 1px solid #baff00;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Button */
+.btn-primary {
+    border: 2px solid #baff00;
+    color: #baff00;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #baff00;
+    color: black;
+}
+
+/* ================= FORM ================= */
+
+.form-container {
     width: 380px;
+    margin: 80px auto;
     padding: 30px;
     background: rgba(20, 30, 50, 0.8);
     border-radius: 12px;
@@ -32,17 +105,14 @@ body {
     box-shadow: 0 0 30px rgba(0,255,150,0.2);
 }
 
-/* Title */
 h2 {
     text-align: center;
     color: #baff00;
     margin-bottom: 20px;
-    font-weight: 600; /* looks better in Poppins */
 }
 
 /* Inputs */
 input, textarea, select {
-    font-family: 'Poppins', sans-serif; /* ✅ consistent font */
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -52,37 +122,85 @@ input, textarea, select {
     color: white;
 }
 
-/* Focus Glow */
+/* Focus */
 input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: #baff00;
     box-shadow: 0 0 10px #baff00;
 }
 
-/* Button */
-button {
-    font-family: 'Poppins', sans-serif; /* ✅ */
+/* Errors */
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+/* Success */
+.success {
+    color: #00ffae;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Submit Button */
+.form-container button {
     width: 100%;
     padding: 12px;
-    background: transparent;
     border: 2px solid #baff00;
     border-radius: 25px;
+    background: transparent;
     color: #baff00;
-    font-weight: 500;
     cursor: pointer;
 }
 
-button:hover {
+.form-container button:hover {
     background: #baff00;
     color: black;
-    box-shadow: 0 0 15px #baff00;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- NAVBAR -->
+
+<header class="header">
+    <div class="container">
+
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <img src="./images/logo.svg" alt="Filmlane">
+        </a>
+
+        <!-- Menu -->
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li><a href="./index.html" class="navbar-link">Home</a></li>
+                <li><a href="./collections.html" class="navbar-link">Collections</a></li>
+                <li><a href="./contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Side -->
+        <div class="header-actions">
+            <div class="lang-wrapper">
+                <select>
+                    <option style="color: black;">EN</option>
+                    <option style="color: black;">AU</option>
+                    <option style="color: black;">AR</option>
+                </select>
+            </div>
+
+            <button class="btn-primary">Sign in</button>
+        </div>
+
+    </div>
+</header>
+
+<!-- FORM -->
+
+<div class="form-container">
     <h2>🎬 Contact Us</h2>
 
     <form id="contactForm">
@@ -103,60 +221,13 @@ button:hover {
         <textarea name="message" rows="4" placeholder="Your Message"></textarea>
         <div class="error" id="messageError"></div>
 
-        <button type="submit">🎬 Send Message</button>
+        <button type="submit">Send Message</button>
 
         <div class="success" id="successMsg"></div>
     </form>
 </div>
 
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    let form = this;
-    let name = form.name.value.trim();
-    let email = form.email.value.trim();
-    let subject = form.subject.value;
-    let message = form.message.value.trim();
-
-    let isValid = true;
-
-    document.getElementById("nameError").textContent = "";
-    document.getElementById("emailError").textContent = "";
-    document.getElementById("subjectError").textContent = "";
-    document.getElementById("messageError").textContent = "";
-    document.getElementById("successMsg").textContent = "";
-
-    if (!name) {
-        document.getElementById("nameError").textContent = "Name required";
-        isValid = false;
-    }
-
-    if (!email) {
-        document.getElementById("emailError").textContent = "Email required";
-        isValid = false;
-    }
-
-    if (!subject) {
-        document.getElementById("subjectError").textContent = "Select subject";
-        isValid = false;
-    }
-
-    if (message.length < 10) {
-        document.getElementById("messageError").textContent = "Min 10 characters";
-        isValid = false;
-    }
-
-    if (isValid) {
-        document.getElementById("successMsg").textContent = "🎉 Message sent!";
-        form.reset();
-
-        setTimeout(() => {
-            document.getElementById("successMsg").textContent = "";
-        }, 3000);
-    }
-});
-</script>
+<script src="contact.js"></script>
 
 </body>
-          </html>
+</html>
