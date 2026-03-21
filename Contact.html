@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Film-lane Contact</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #0b1320, #0f1c2e);
+    color: white;
+    padding-top: 80px;
+}
+
+/*  NAVBAR  */
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 15, 25, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.header .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+    height: 40px;
+}
+
+/* Navbar */
+.navbar-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.navbar-link:hover {
+    color: #baff00;
+}
+
+/* Right Section */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-wrapper select {
+    background: transparent;
+    color: white;
+    border: 1px solid #baff00;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Button */
+.btn-primary {
+    border: 2px solid #baff00;
+    color: #baff00;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #baff00;
+    color: black;
+}
+
+/*  FORM */
+
+.form-container {
+    width: 380px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgba(20, 30, 50, 0.8);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,255,150,0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #baff00;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+/* Focus */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #baff00;
+    box-shadow: 0 0 10px #baff00;
+}
+
+/* Errors */
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+/* Success */
+.success {
+    color: #00ffae;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #baff00;
+    border-radius: 25px;
+    background: transparent;
+    color: #baff00;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background: #baff00;
+    color: black;
+}
+
+/*  FOOTER  */
+
+.footer-bottom {
+    margin-top: 50px;
+    background: rgba(10, 15, 25, 0.95);
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+/* Text */
+.footer-bottom p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.footer-bottom a {
+    color: #baff00;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Image */
+.footer-bottom-img {
+    height: 30px;
+    opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/*  RESPONSIVE NAVBAR  */
+
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(10, 15, 25, 0.98);
+        padding: 20px;
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-actions {
+        display: none;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="header">
+    <div class="container">
+
+        <a href="#" class="logo">
+            <img src="./images/logo.svg" alt="Filmlane">
+        </a>
+
+        <nav class="navbar" id="navbar">
+            <ul class="navbar-list">
+                <li><a href="./index.html" class="navbar-link">Home</a></li>
+                <li><a href="./collections.html" class="navbar-link">Collections</a></li>
+                <li><a href="./contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+
+            
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="lang-wrapper">
+                <select>
+                    <option style="color:black;">EN</option>
+                    <option style="color:black;">AU</option>
+                    <option style="color:black;">AR</option>
+                </select>
+            </div>
+
+            <button class="btn-primary">Sign in</button>
+        </div>
+
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        
+</button>
+
+
+
+    </div>
+</header>
+
+<!-- FORM -->
+<div class="form-container">
+    <h2>🎬 Contact Us</h2>
+
+    <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name">
+        <div class="error" id="nameError"></div>
+
+        <input type="email" name="email" placeholder="Your Email">
+        <div class="error" id="emailError"></div>
+
+        <select name="subject">
+            <option value="">Select Subject</option>
+            <option>Movie Inquiry</option>
+            <option>Feedback</option>
+            <option>Bug Report</option>
+        </select>
+        <div class="error" id="subjectError"></div>
+
+        <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+        <div class="error" id="messageError"></div>
+
+        <button type="submit">Send Message</button>
+
+        <div class="success" id="successMsg"></div>
+    </form>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bottom">
+    <div class="footer-container">
+
+        <p>
+            &copy; 2026 <a href="#">codewithWebWarriors</a>. All Rights Reserved
+        </p>
+
+        <img src="./images/footer-bottom-img.png" alt="payments" class="footer-bottom-img">
+
+    </div>
+</div>
+
+<script src="contact.js"></script>
+
+</body>
+</html>
