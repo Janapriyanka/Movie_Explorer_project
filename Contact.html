@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Filmane Contact</title>
+
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* ✅ Updated */
+    height: 100vh;
+    background: linear-gradient(120deg, #0b1320, #0f1c2e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Container */
+.container {
+    width: 380px;
+    padding: 30px;
+    background: rgba(20, 30, 50, 0.8);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,255,150,0.2);
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    color: #baff00;
+    margin-bottom: 20px;
+    font-weight: 600; /* looks better in Poppins */
+}
+
+/* Inputs */
+input, textarea, select {
+    font-family: 'Poppins', sans-serif; /* ✅ consistent font */
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+/* Focus Glow */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #baff00;
+    box-shadow: 0 0 10px #baff00;
+}
+
+/* Button */
+button {
+    font-family: 'Poppins', sans-serif; /* ✅ */
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #baff00;
+    border-radius: 25px;
+    color: #baff00;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #baff00;
+    color: black;
+    box-shadow: 0 0 15px #baff00;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🎬 Contact Us</h2>
+
+    <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name">
+        <div class="error" id="nameError"></div>
+
+        <input type="email" name="email" placeholder="Your Email">
+        <div class="error" id="emailError"></div>
+
+        <select name="subject">
+            <option value="">Select Subject</option>
+            <option>Movie Inquiry</option>
+            <option>Feedback</option>
+            <option>Bug Report</option>
+        </select>
+        <div class="error" id="subjectError"></div>
+
+        <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+        <div class="error" id="messageError"></div>
+
+        <button type="submit">🎬 Send Message</button>
+
+        <div class="success" id="successMsg"></div>
+    </form>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let form = this;
+    let name = form.name.value.trim();
+    let email = form.email.value.trim();
+    let subject = form.subject.value;
+    let message = form.message.value.trim();
+
+    let isValid = true;
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("subjectError").textContent = "";
+    document.getElementById("messageError").textContent = "";
+    document.getElementById("successMsg").textContent = "";
+
+    if (!name) {
+        document.getElementById("nameError").textContent = "Name required";
+        isValid = false;
+    }
+
+    if (!email) {
+        document.getElementById("emailError").textContent = "Email required";
+        isValid = false;
+    }
+
+    if (!subject) {
+        document.getElementById("subjectError").textContent = "Select subject";
+        isValid = false;
+    }
+
+    if (message.length < 10) {
+        document.getElementById("messageError").textContent = "Min 10 characters";
+        isValid = false;
+    }
+
+    if (isValid) {
+        document.getElementById("successMsg").textContent = "🎉 Message sent!";
+        form.reset();
+
+        setTimeout(() => {
+            document.getElementById("successMsg").textContent = "";
+        }, 3000);
+    }
+});
+</script>
+
+</body>
+          </html>
