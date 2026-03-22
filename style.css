@@ -369,7 +369,7 @@ body.active { overflow: hidden; }
   background: var(--gainsboro);
   border-radius: 10px;
   box-shadow: inset 0 1px 0 var(--black),
-              inset 0 -1px 0 var(--black);
+    inset 0 -1px 0 var(--black);
 }
 
 
@@ -752,7 +752,7 @@ body.active { overflow: hidden; }
 \*-----------------------------------*/
 
 .cta {
-  background: url("../images/cta-bg.jpg") no-repeat;
+  background: url("./images/cta-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   text-align: center;
