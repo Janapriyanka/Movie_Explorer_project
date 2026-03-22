@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Film-lane Contact</title>
+<title>Filmane Contact</title>
 
 <style>
 * {
@@ -12,12 +12,16 @@
 }
 
 /* BODY */
-body {
+
+    body {
     font-family: 'Poppins', sans-serif;
     background: #171D21;
     color: white;
     padding-top: 80px;
+    min-height: 100vh;
 }
+
+
 
 /*  NAVBAR  */
 
@@ -225,7 +229,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Mobile Navbar */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
 
     .menu-toggle {
         display: block;
@@ -237,7 +241,7 @@ input:focus, textarea:focus, select:focus {
         right: -100%;
         width: 250px;
         height: 100vh;
-        background: #171D21;
+        background: rgba(10, 15, 25, 0.98);
         padding: 20px;
         transition: 0.3s;
         z-index: 999;
@@ -255,6 +259,17 @@ input:focus, textarea:focus, select:focus {
     .header-actions {
         display: none;
     }
+
+    .contactform {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 
